@@ -21,6 +21,9 @@
         <li class="nav-item">
           <a class="nav-link {{menuNavegation('contact')}}" href="{{route('contact')}}">Contáctanos</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{menuNavegation('holis')}}" href="{{route('hola')}}">Holis</a>
+          </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

@@ -17,6 +17,8 @@ class ModeloController extends Controller
                 "KIA" => 'SPORTAGE',
                 "GREAT WALL" => 'WINGLE'
             ];
-        return view('modelos', compact('autos'));
+        $nombre = "Byron";
+
+        return view('modelos', compact('autos', 'nombre'));
     }
 }

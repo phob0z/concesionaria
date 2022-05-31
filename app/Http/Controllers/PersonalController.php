@@ -29,9 +29,7 @@ class PersonalController extends Controller
             "Web"=>'https://github.com/Luis',
             "img"=>'https://avatars.githubusercontent.com/u/73706516?v=4'
             ]
-        ];
-
-
+        ];       
         return view('personal',compact('persons'));
     }
 }
