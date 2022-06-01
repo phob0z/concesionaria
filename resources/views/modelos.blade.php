@@ -1,47 +1,78 @@
 @extends('layout.main')
 
-@section('title','Modelos')
+@section('title', 'Modelos')
 
 @section('content')
-<h1>Nuestros modelos 2022</h1>
 
+    <style>
+        .secciones {
+            width: 1200px;
+            height: 400px;
+            //background-color:gainsboro;
+            display: flex;
+            align-items: center;
 
-@for ($i = 0; $i < 10; $i++)
-    El valor actual es: {{ $i }}<br>
-@endfor
+        }
 
-<hr>
+        .info-container {
+            width: 300px;
+            height: 350px;
+            background-color: ghostwhite;
+            display: inline-block;
+            position: relative;
+            left: 45px;
+            margin: 25px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+            cursor: default;
+            transition: all 400ms ease;
+        }
 
-<ul>
-@foreach ($autos as $auto)
-    <li> Modelo: <b>{{ $auto }}</b></li>
-@endforeach
-</ul>
+        .info-sections {
+            width: 300px;
+            height: 150px;
+            display: grid;
+            //background-color: aquamarine;
+            padding: 25px;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
 
+        }
 
-<hr>
+        .info-container:hover {
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.10);
+            transform: translateY(-10%);
+        }
 
-<ol>
-@forelse($autos as $clave => $auto )
-    <li><b> {{$clave}} </b></li>
-     <ul>
-         <li>{{$auto}}</li>
-     </ul>
-@empty
-    <p>No Existen autos disponibles</p>
-@endforelse
-</ol>
+        .action {
+            background-color: slategrey;
+            color: aliceblue;
+        }
 
+    </style>
+    <h1>Nuestros modelos 2022</h1>
 
-<hr>
-@if (count($autos) === 1)
-    Existe un registro
-@elseif (count($autos) > 1)
-   Existen múltiples registros!
-@else
-    No existen registros!
-@endif
+    @foreach ($autos as $marca => $carros)
+        <hr>
+        <h2 style="text-align: center;"><b>{{ strtoupper($marca) }}</b></h2>
+        <hr>
+        <div class="secciones" style="align-items: center">
+            @foreach ($carros as $modelo => $caracteristicas)
+                <div class="info-container">
+                    <div>
+                        <img width="300px" height="200px" src="{{ asset('/images/'. $caracteristicas[1]) }}">
+                    </div>
+                    <div class="info-sections">
+                        <p>Desde ${{ $caracteristicas[0] }}</p>
 
-
-
+                        <button style="font-weight: bold;" class="action">Comprar un {{ $modelo }}</button>
+                    </div>
+                </div>
+                @if ($loop->iteration%3==0 && !$loop->last)
+                    </div>
+                    <div class="secciones">
+                @endif
+            @endforeach
+        </div>
+    @endforeach
 @endsection()

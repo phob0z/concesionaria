@@ -163,9 +163,6 @@ Route::get('modelos',ModeloController::class)->name('models');
 
 Route::get('contactos/{nombre?}',[ContactoController::class,'dataContact'])->name('contact');
 
-Route::get('holis', HolisController::class)->name('hola');
-
-
 // Route::resource('autos',AutoController::class)->except('index','show');
 // Route::resource('autos',AutoController::class)->only('index');
 
